@@ -3,4 +3,14 @@ module.exports = {
     main: './src/index.js',
     vendor: './src/vendor.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: {
+          loader: 'html-loader',
+        },
+      },
+    ],
+  },
 };

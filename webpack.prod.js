@@ -41,6 +41,17 @@ module.exports = merge(common, {
           'postcss-loader',
         ],
       },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[contenthash].[ext]',
+            outputPath: 'imgs',
+            publicPath: './imgs',
+          },
+        },
+      },
     ],
   },
 });
