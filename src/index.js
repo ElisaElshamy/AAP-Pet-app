@@ -1,3 +1,6 @@
+// Styles
+import './style.css';
+
 // Classes
 import PetAPI from './utils/PetAPI';
 const url = require('url');

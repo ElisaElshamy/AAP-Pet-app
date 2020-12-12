@@ -10,7 +10,13 @@
   "author": "Elisa Elshamy",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.2",
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",

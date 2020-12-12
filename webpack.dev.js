@@ -8,6 +8,18 @@ module.exports = merge(common, {
     filename: '[name].js',
     path: path.resolve(__dirname, 'public'),
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader',
+        ],
+      },
+    ],
+  },
   devServer: {
     port: 3000,
     open: true,
