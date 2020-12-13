@@ -3,9 +3,13 @@ import './style.css';
 
 // Classes
 import PetAPI from './utils/PetAPI';
+import Pet from './components/Pet';
 
 import axios from 'axios';
 import { ALL_PETS } from './utils/setup';
+
+// DOM Elements
+const main = document.querySelector('#main');
 
 /*
  * TO DO:
@@ -86,3 +90,14 @@ const getAllPets = (query) => {
 const pets = (params) => getAllPets(params);
 console.log(pets(params));
 */
+
+const createCardList = (pets) => {
+  main.classList.add('grid', 'grid-cols-12');
+  pets.forEach((petObj, i) => {
+    const pet = new Pet(petObj);
+    const petCard = pet.createCard();
+    main.appendChild(petCard);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', createCardList(ALL_PETS));

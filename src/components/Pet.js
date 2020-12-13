@@ -9,7 +9,7 @@ class Pet {
       : petObj.primary_breed;
     this.gender = petObj.sex === 'f' ? 'Female' : 'Male';
     this.age = petObj.age ? petObj.age : 'Unknown';
-    this.location = `${addr_city}, ${addr_state_code}`;
+    this.location = `${petObj.addr_city}, ${petObj.addr_state_code}`;
   }
 
   createCard() {
