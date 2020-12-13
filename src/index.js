@@ -124,5 +124,8 @@ const calcCardHeight = () => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', createCardList(ALL_PETS));
 window.addEventListener('resize', calcCardHeight);
+document.addEventListener('DOMContentLoaded', () => {
+  createCardList(ALL_PETS);
+  calcCardHeight();
+});
