@@ -4,9 +4,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: {
-          DEFAULT: '#242424',
-        },
         coral: {
           DEFAULT: '#F9665E',
           secondary: {
@@ -37,12 +34,24 @@ module.exports = {
             1: '#00353C',
           },
         },
+        night: {
+          DEFAULT: '#242424',
+        },
         turquoise: {
           DEFAULT: '#00BFDA',
           secondary: {
             1: '#0099B8',
           },
         },
+      },
+      fontSize: {
+        '3.5xl': '2rem',
+      },
+      letterSpacing: {
+        tightest: '-0.15px',
+      },
+      maxWidth: {
+        '7.5xl': '87.5rem',
       },
     },
   },

@@ -92,12 +92,21 @@ console.log(pets(params));
 */
 
 const createCardList = (pets) => {
-  main.classList.add('grid', 'grid-cols-12');
+  const cardList = document.createElement('div');
+  cardList.classList.add(
+    'card-list',
+    'grid',
+    'grid-cols-1',
+    'sm:grid-cols-3',
+    'max-w-7.5xl',
+    'gap-6'
+  );
   pets.forEach((petObj, i) => {
     const pet = new Pet(petObj);
     const petCard = pet.createCard();
-    main.appendChild(petCard);
+    cardList.appendChild(petCard);
   });
+  main.appendChild(cardList);
 };
 
 document.addEventListener('DOMContentLoaded', createCardList(ALL_PETS));
