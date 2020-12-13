@@ -2,10 +2,52 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        black: {
+          DEFAULT: '#242424',
+        },
+        coral: {
+          DEFAULT: '#F9665E',
+          secondary: {
+            1: '#CC563D',
+            2: '#883929',
+          },
+        },
+        grey: {
+          DEFAULT: '#B3B3B3',
+          secondary: {
+            1: '#DADADA',
+            2: '#F9F9F9',
+            3: '#F2F2F2',
+            4: '#ECECEC',
+            5: '#DFDFDF',
+          },
+        },
+        lemon: {
+          DEFAULT: '#FFCC1B',
+          secondary: {
+            1: '#D1A717',
+            2: '#9E7F11',
+          },
+        },
+        mint: {
+          DEFAULT: '#00CCA8',
+          secondary: {
+            1: '#00353C',
+          },
+        },
+        turquoise: {
+          DEFAULT: '#00BFDA',
+          secondary: {
+            1: '#0099B8',
+          },
+        },
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
