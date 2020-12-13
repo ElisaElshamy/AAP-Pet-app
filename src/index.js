@@ -10,6 +10,7 @@ import { ALL_PETS } from './utils/setup';
 
 // DOM Elements
 const main = document.querySelector('#main');
+const cardList = document.querySelector('.card-list');
 
 /*
  * TO DO:
@@ -97,9 +98,10 @@ const createCardList = (pets) => {
     'card-list',
     'grid',
     'grid-cols-1',
-    'sm:grid-cols-3',
-    'max-w-7.5xl',
-    'gap-6'
+    'md:grid-cols-3colsmd',
+    'lg:grid-cols-3colslg',
+    'gap-6',
+    'justify-center'
   );
   pets.forEach((petObj, i) => {
     const pet = new Pet(petObj);
@@ -109,4 +111,18 @@ const createCardList = (pets) => {
   main.appendChild(cardList);
 };
 
+const calcCardHeight = () => {
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach((card, i) => {
+    const cardWidth = card.offsetWidth;
+    if (window.innerWidth > 767) {
+      card.style.height = `${cardWidth * 1.5}px`;
+    } else {
+      card.style.height = `${cardWidth * 0.45}px`;
+    }
+  });
+};
+
 document.addEventListener('DOMContentLoaded', createCardList(ALL_PETS));
+window.addEventListener('resize', calcCardHeight);
