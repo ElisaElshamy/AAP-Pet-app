@@ -47,6 +47,10 @@ module.exports = {
       fontSize: {
         '3.5xl': '2rem',
       },
+      gridTemplateColumns: {
+        '3colsmd': 'repeat(3, minmax(0, 224px))',
+        '3colslg': 'repeat(3, minmax(224px, 368px))',
+      },
       letterSpacing: {
         tightest: '-0.15px',
       },
