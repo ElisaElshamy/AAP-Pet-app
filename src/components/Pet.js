@@ -20,8 +20,8 @@ class Pet {
     petDetails.classList.add('pet-details', 'flex', 'flex-col', 'px-6');
 
     const petImg = document.createElement('img');
-    petImg.src = 'https://pet-uploads.adoptapet.com/a/5/1/519636138.jpg';
-    petImg.style.cssText = `width: 100%;`;
+    petImg.src = 'https://pet-uploads.adoptapet.com/c/f/6/519811250.jpg';
+    petImg.style.cssText = `width: 100%; height: 60%;`;
 
     const petName = document.createElement('h4');
     petName.innerHTML = this.name;
@@ -44,10 +44,10 @@ class Pet {
       'lg:text-xl',
       'text-night',
       'leading-5',
-      'sm:leading-6',
+      'md:leading-6',
       'lg:leading-8',
       'mb-4',
-      'sm:mb-2.5',
+      'md:mb-2.5',
       'lg:mb-5',
       'tracking-tightest'
     );
@@ -57,7 +57,7 @@ class Pet {
     info.classList.add(
       'font-light',
       'text-sm',
-      'sm:text-base',
+      'md:text-base',
       'lg:text-xl',
       'text-night',
       'leading-relaxed',
@@ -69,7 +69,7 @@ class Pet {
     location.classList.add(
       'font-light',
       'text-sm',
-      'sm:text-base',
+      'md:text-base',
       'lg:text-xl',
       'text-night',
       'leading-relaxed',
