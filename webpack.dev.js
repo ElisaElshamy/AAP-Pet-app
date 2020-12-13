@@ -40,5 +40,8 @@ module.exports = merge(common, {
   devServer: {
     port: 3000,
     open: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
 });

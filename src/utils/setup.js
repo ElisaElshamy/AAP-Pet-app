@@ -5,8 +5,4 @@ export const BASE_API_URL = 'https://api.adoptapet.com/search/';
 
 export const AXIOS = axios.create({
   baseURL: BASE_API_URL,
-  timeout: 5000,
-  headers: {
-    key: API_KEY,
-  },
 });

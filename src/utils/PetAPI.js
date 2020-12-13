@@ -6,17 +6,25 @@ class PetAPI {
     this._baseUrl = BASE_API_URL;
   }
 
-  async getPets(url_func, query) {
-    const url = `${url_func}?key=${this._apiKey}`;
+  async getPets(query) {
+    const url = `pet_search?key=${this._apiKey}`;
     try {
-      const response = await AXIOS.post(url, query);
+      const response = await AXIOS.get(url, query);
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   }
 
-  getPet(url_func, query) {}
+  async getPet(query) {
+    const url = `pet_details?key=${this._apiKey}`;
+    try {
+      const response = await AXIOS.get(url, query);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 export default PetAPI;
