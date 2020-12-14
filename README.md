@@ -49,6 +49,7 @@ npm run build
 - Get the user's geo location.
 - Load all of the pets using a pager with a callback function or lazy loading approach.
 - Load more > link goes to a individual pet's profile page.
+- Concise error handling w/ UI implementation for bad/failed API requests.
 - Clean up async error from individual pet API call causing card height functions to not work properly and throwing errors in the browser.
 - Fix filter placement on grid.
 - Clean up mobile styles, not working well on mobile.

@@ -136,6 +136,13 @@ class Pet {
     info.innerHTML = `${this.gender}, ${this.age}`;
     info.classList.add('gender-age');
 
+    if (this.special_needs) {
+      const special_needs = document.createElement('span');
+      special_needs.innerText = ' special needs';
+      special_needs.classList.add('text-coral');
+      info.append(special_needs);
+    }
+
     const location = document.createElement('span');
     location.innerHTML = this.location;
     location.classList.add('location');
