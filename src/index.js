@@ -3,6 +3,7 @@ import './style.css';
 
 // Classes
 import PetAPI from './utils/PetAPI';
+import DropdownFilter from './components/DropdownFilter';
 import Pet from './components/Pet';
 
 import axios from 'axios';
@@ -10,7 +11,16 @@ import { ALL_PETS } from './utils/setup';
 
 // DOM Elements
 const main = document.querySelector('#main');
-const cardList = document.querySelector('.card-list');
+const dropdownFilter = new DropdownFilter(
+  ['Act quickly', 'Adopted', 'Special needs'],
+  ''
+);
+
+// DOM Fragment - Add all elements to this then append to main
+// to prevent Document reflow everytime we add a child to main
+const docFrag = document.createDocumentFragment();
+
+let cardList;
 
 /*
  * TO DO:
@@ -93,7 +103,7 @@ console.log(pets(params));
 */
 
 const createCardList = (pets) => {
-  const cardList = document.createElement('div');
+  //const cardList = document.createElement('div');
   cardList.classList.add(
     'card-list',
     'grid',
@@ -126,6 +136,8 @@ const calcCardHeight = () => {
 
 window.addEventListener('resize', calcCardHeight);
 document.addEventListener('DOMContentLoaded', () => {
+  cardList = document.createElement('div');
+  cardList.appendChild(dropdownFilter.createDropdownFilter());
   createCardList(ALL_PETS);
   calcCardHeight();
 });

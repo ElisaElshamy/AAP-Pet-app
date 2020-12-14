@@ -51,6 +51,9 @@ module.exports = {
         '3colsmd': 'repeat(3, minmax(0, 224px))',
         '3colslg': 'repeat(3, minmax(224px, 368px))',
       },
+      height: {
+        15: '3.625rem',
+      },
       letterSpacing: {
         tightest: '-0.15px',
       },
@@ -60,7 +63,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      fontWeight: ['hover', 'focus'],
+    },
   },
   plugins: [],
 };
