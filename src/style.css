@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pet-name {
+  @apply font-extrabold text-xl lg:text-3.5xl text-turquoise leading-6 lg:leading-10 mt-4 tracking-tightest;
+}
+
+.breed {
+  @apply font-bold text-base lg:text-xl text-night leading-5 md:leading-6 lg:leading-8 mb-4 md:mb-2.5 lg:mb-5 tracking-tightest;
+}
+
+.gender-age {
+  @apply font-light text-sm md:text-base lg:text-xl text-night leading-relaxed tracking-tightest;
+}
+
+.location {
+  @apply font-light text-sm md:text-base lg:text-xl text-night leading-relaxed tracking-tightest;
+}
+
+.info-card {
+  @apply absolute bg-turquoise-secondary-1 px-5 py-6 text-white top-0 left-0 h-full w-full z-10;
+}
+
+.info-wrap {
+  @apply grid h-full md:gap-5 text-white md:pb-6 md:border-solid md:border-b md:border-white md:grid-cols-4;
+}
+
+.info-label {
+  @apply col-span-1 font-bold text-sm md:text-base;
+}
+
+.info-value {
+  @apply col-span-3 font-light text-sm md:text-base overflow-hidden overflow-ellipsis;
+}

@@ -79,7 +79,21 @@ const calcCardHeight = () => {
   });
 };
 
+const calcInfoCardHeight = () => {
+  const infoCards = document.querySelectorAll('.info-card');
+
+  infoCards.forEach((infoCard, i) => {
+    const infoCardWidth = infoCard.offsetWidth;
+    if (window.innerWidth > 767) {
+      infoCard.style.height = `${infoCardWidth * 1.5}px`;
+    } else {
+      infoCard.style.height = `${infoCardWidth * 0.45}px`;
+    }
+  });
+};
+
 window.addEventListener('resize', calcCardHeight);
+window.addEventListener('resize', calcInfoCardHeight);
 document.addEventListener('DOMContentLoaded', async () => {
   const petData = await petApi.getAllPets(params);
   cardList = document.createElement('div');

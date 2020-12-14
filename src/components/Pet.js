@@ -77,56 +77,19 @@ class Pet {
 
     const petName = document.createElement('h4');
     petName.innerHTML = this.name;
-    petName.classList.add(
-      'font-extrabold',
-      'text-xl',
-      'lg:text-3.5xl',
-      'text-turquoise',
-      'leading-6',
-      'lg:leading-10',
-      'mt-4',
-      'tracking-tightest'
-    );
+    petName.classList.add('pet-name');
 
     const breed = document.createElement('h5');
     breed.innerHTML = this.breed;
-    breed.classList.add(
-      'font-bold',
-      'text-base',
-      'lg:text-xl',
-      'text-night',
-      'leading-5',
-      'md:leading-6',
-      'lg:leading-8',
-      'mb-4',
-      'md:mb-2.5',
-      'lg:mb-5',
-      'tracking-tightest'
-    );
+    breed.classList.add('breed');
 
     const info = document.createElement('span');
     info.innerHTML = `${this.gender}, ${this.age}`;
-    info.classList.add(
-      'font-light',
-      'text-sm',
-      'md:text-base',
-      'lg:text-xl',
-      'text-night',
-      'leading-relaxed',
-      'tracking-tightest'
-    );
+    info.classList.add('gender-age');
 
     const location = document.createElement('span');
     location.innerHTML = this.location;
-    location.classList.add(
-      'font-light',
-      'text-sm',
-      'md:text-base',
-      'lg:text-xl',
-      'text-night',
-      'leading-relaxed',
-      'tracking-tightest'
-    );
+    location.classList.add('location');
 
     const petInfoCard = this.createInfoCard();
     petDetails.append(petName, breed, info, location);
@@ -137,30 +100,10 @@ class Pet {
 
   createInfoCard() {
     const infoCard = document.createElement('div');
-    infoCard.classList.add(
-      'info-card',
-      'absolute',
-      'bg-turquoise-secondary-1',
-      'text-white',
-      'top-0',
-      'left-0',
-      'h-full',
-      'w-full',
-      'z-10'
-    );
+    infoCard.classList.add('info-card');
 
     const infoWrap = document.createElement('div');
-    infoWrap.classList.add(
-      'info-wrap',
-      'grid',
-      'md:gap-5',
-      'bg-turquoise-secondary-1',
-      'text-white',
-      'md:border-solid',
-      'md:border',
-      'md:border-white',
-      'md:grid-cols-3'
-    );
+    infoWrap.classList.add('info-wrap');
 
     const colorLabel = document.createElement('span');
     colorLabel.innerText = 'Color';
