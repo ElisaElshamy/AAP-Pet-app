@@ -41,10 +41,12 @@ class PetAPI {
   }
 
   getPet(url) {
-    //const url = `pet_details?key=${this._apiKey}`;
     return axios
       .get(url)
-      .then((res) => res.data.pet)
+      .then((res) => {
+        const petData = res.data.pet;
+        return petData;
+      })
       .catch((err) => err);
   }
 }

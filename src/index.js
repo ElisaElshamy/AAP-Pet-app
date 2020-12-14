@@ -9,10 +9,6 @@ import Pet from './components/Pet';
 // DOM Elements
 const main = document.querySelector('#main');
 
-// DOM Fragment - Add all elements to this then append to main
-// to prevent Document reflow everytime we add a child to main
-const docFrag = document.createDocumentFragment();
-
 // Initial Global Variables
 let cardList;
 const petApi = new PetAPI();
