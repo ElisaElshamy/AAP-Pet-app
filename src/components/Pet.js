@@ -66,7 +66,7 @@ class Pet {
 
   createCard() {
     const card = document.createElement('div');
-    card.classList.add('card', 'bg-white', 'shadow-md');
+    card.classList.add('card', 'bg-white', 'relative', 'shadow-md');
 
     const petDetails = document.createElement('div');
     petDetails.classList.add('pet-details', 'flex', 'flex-col', 'px-6');
@@ -128,15 +128,104 @@ class Pet {
       'tracking-tightest'
     );
 
+    const petInfoCard = this.createInfoCard();
     petDetails.append(petName, breed, info, location);
-    card.append(petImg, petDetails);
+    card.append(petImg, petDetails, petInfoCard);
 
     return card;
   }
 
   createInfoCard() {
     const infoCard = document.createElement('div');
-    infoCard.classList.add('info-card', 'bg-turquoise', 'text-white');
+    infoCard.classList.add(
+      'info-card',
+      'absolute',
+      'bg-turquoise-secondary-1',
+      'text-white',
+      'top-0',
+      'left-0',
+      'h-full',
+      'w-full',
+      'z-10'
+    );
+
+    const infoWrap = document.createElement('div');
+    infoWrap.classList.add(
+      'info-wrap',
+      'grid',
+      'md:gap-5',
+      'bg-turquoise-secondary-1',
+      'text-white',
+      'md:border-solid',
+      'md:border',
+      'md:border-white',
+      'md:grid-cols-3'
+    );
+
+    const colorLabel = document.createElement('span');
+    colorLabel.innerText = 'Color';
+    colorLabel.classList.add('info-label');
+
+    const color = document.createElement('p');
+    color.innerText = `${this.color || 'NA'}`;
+    color.classList.add('info-value');
+
+    const sizeLabel = document.createElement('span');
+    sizeLabel.innerText = 'Size';
+    sizeLabel.classList.add('info-label');
+
+    const size = document.createElement('p');
+    size.innerText = `${this.size || 'NA'}`;
+    size.classList.add('info-value');
+
+    const detailsLabel = document.createElement('span');
+    detailsLabel.innerText = 'Details';
+    detailsLabel.classList.add('info-label');
+
+    const details = document.createElement('p');
+    details.classList.add('info-value');
+
+    // These values are flawed because there are
+    // NULL cases which should be treated as 'N/A'
+    // and not falsy
+    details.innerHTML = this.details.housetrained
+      ? 'House-trained<br>'
+      : 'Not house-trained';
+    details.innerHTML = this.details.good_with_kids
+      ? 'Good with kids<br>'
+      : 'Not good with kids';
+    details.innerHTML = this.details.good_with_cats
+      ? 'Good with cats<br>'
+      : 'Not good with cats';
+    details.innerHTML = this.details.good_with_dogs
+      ? 'Good with dogs<br>'
+      : 'Not good with dogs';
+
+    const storyLabel = document.createElement('span');
+    storyLabel.innerText = 'Story';
+    storyLabel.classList.add('info-label');
+
+    const story = document.createElement('p');
+    story.innerHTML = `${this.story || 'NA'}`;
+    story.classList.add('info-value');
+
+    infoWrap.append(
+      colorLabel,
+      color,
+      sizeLabel,
+      size,
+      detailsLabel,
+      details,
+      storyLabel,
+      story
+    );
+
+    const learnMore = document.createElement('a');
+    learnMore.href = '#'; // Would link to pet profile page
+    learnMore.innerText = 'Learn more >';
+    infoCard.append(infoWrap, learnMore);
+
+    return infoCard;
   }
 }
 
