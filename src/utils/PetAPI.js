@@ -32,11 +32,19 @@ class PetAPI {
       .catch((err) => console.log(err));
   }
 
-  getPet(query) {
+  getPetQuery(query) {
     const url = `pet_details?key=${this._apiKey}`;
     return axios
       .get(url, query)
       .then((res) => res)
+      .catch((err) => err);
+  }
+
+  getPet(url) {
+    //const url = `pet_details?key=${this._apiKey}`;
+    return axios
+      .get(url)
+      .then((res) => res.data.pet)
       .catch((err) => err);
   }
 }

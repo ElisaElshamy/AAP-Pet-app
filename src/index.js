@@ -56,8 +56,10 @@ const createCardList = (pets) => {
     'gap-6',
     'justify-center'
   );
-  pets.forEach((petObj, i) => {
-    const pet = new Pet(petObj);
+  pets.forEach(async (petObj, i) => {
+    const pet = new Pet(petObj.details_url);
+    const petData = await petApi.getPet(pet.url);
+    pet.setPetInfo(petData);
     const petCard = pet.createCard();
     cardList.appendChild(petCard);
   });
@@ -83,5 +85,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   cardList = document.createElement('div');
   cardList.appendChild(dropdownFilter.createDropdownFilter());
   createCardList(petData);
+
   calcCardHeight();
 });

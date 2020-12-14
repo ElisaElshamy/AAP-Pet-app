@@ -1,15 +1,52 @@
 class Pet {
-  constructor(petObj) {
-    this.url = petObj.details_url;
+  constructor(petUrl) {
+    // May be used later for pet's profile page
+    this.url = petUrl;
 
-    /* We will get all properties later in a method called getPetInfo() */
-    this.name = petObj.pet_name;
-    this.breed = petObj.secondary_breed
-      ? `${petObj.primary_breed}/${petObj.secondary_breed}`
-      : petObj.primary_breed;
-    this.gender = petObj.sex === 'f' ? 'Female' : 'Male';
-    this.age = petObj.age ? petObj.age : 'Unknown';
-    this.location = `${petObj.addr_city}, ${petObj.addr_state_code}`;
+    // Initialize all of the pet's details to null
+    // since we will have no choice but to make another
+    // API call to each pet's detail_url to get some of
+    // the missing info from the pet_search API
+    this.name = null;
+    this.gender = null;
+    this.age = null;
+    this.breed = null;
+    this.location = null;
+
+    this.card_img = null;
+    this.thumbnail = null;
+
+    this.act_quickly = null;
+    this.adopted = null;
+    this.special_needs = null;
+  }
+
+  setPetInfo(petData) {
+    this.name = petData.pet_name;
+
+    this.gender = petData.sex ? petData.sex : 'Unknown';
+
+    this.age = petData.age ? petData.age : 'Unknown';
+
+    this.breed = petData.secondary_breed
+      ? `${petData.primary_breed}/${petData.secondary_breed}`
+      : petData.primary_breed;
+
+    this.location = `${petData.addr_city || 'N/A'}, ${
+      petData.addr_state_code || 'N/A'
+    }`;
+
+    this.card_img = petData.images[0].original_url
+      ? petData.images[0].original_url
+      : '';
+
+    this.thumbnail = petData.images[0].thumbnail_url
+      ? petData.images[0].thumbnail_url
+      : '';
+
+    this.act_quickly = petData.act_quickly;
+    this.adopted = Math.random() < 0.5; // Generates random Boolean
+    this.special_needs = petData.special_needs;
   }
 
   createCard() {
@@ -20,7 +57,7 @@ class Pet {
     petDetails.classList.add('pet-details', 'flex', 'flex-col', 'px-6');
 
     const petImg = document.createElement('img');
-    petImg.src = 'https://pet-uploads.adoptapet.com/c/f/6/519811250.jpg';
+    petImg.src = `${this.card_img}`;
     petImg.style.cssText = `width: 100%; height: 60%;`;
 
     const petName = document.createElement('h4');
