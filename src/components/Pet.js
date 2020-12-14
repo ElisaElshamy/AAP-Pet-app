@@ -122,8 +122,44 @@ class Pet {
 
     const petImg = document.createElement('img');
     petImg.src = `${this.card_img}`;
-    petImg.style.cssText = `width: 100%; height: 60%;`;
+    petImg.classList.add('h-full', 'w-full');
 
+    const petImgWrap = document.createElement('div');
+    petImgWrap.classList.add('relative', 'w-full');
+    petImgWrap.style.cssText = `height: 60%;`;
+
+    let petStatus;
+    if (this.act_quickly) {
+      petStatus = document.createElement('span');
+      petStatus.innerText = 'Act Quickly';
+      petStatus.classList.add(
+        'pet-status',
+        'bg-lemon',
+        'text-black',
+        'absolute',
+        'block',
+        'bottom-0',
+        'w-full',
+        'z-8'
+      );
+      petImgWrap.append(petStatus);
+    } else if (this.adopted) {
+      petStatus = document.createElement('span');
+      petStatus.innerText = 'Adopted';
+      petStatus.classList.add(
+        'pet-status',
+        'bg-turquoise',
+        'text-white',
+        'absolute',
+        'block',
+        'bottom-0',
+        'w-full',
+        'z-8'
+      );
+      petImgWrap.append(petStatus);
+    }
+
+    petImgWrap.append(petImg);
     const petName = document.createElement('h4');
     petName.innerHTML = this.name;
     petName.classList.add('pet-name');
@@ -149,7 +185,7 @@ class Pet {
 
     const petInfoCard = this.createInfoCard();
     petDetails.append(petName, breed, info, location);
-    card.append(petImg, heartButton, infoButton, petDetails, petInfoCard);
+    card.append(petImgWrap, heartButton, infoButton, petDetails, petInfoCard);
 
     return card;
   }

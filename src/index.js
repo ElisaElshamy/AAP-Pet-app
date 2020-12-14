@@ -97,4 +97,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   createCardList(petData);
 
   calcCardHeight();
+  calcInfoCardHeight();
 });
