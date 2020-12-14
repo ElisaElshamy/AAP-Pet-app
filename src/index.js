@@ -1,31 +1,29 @@
-// Styles
+// Style Imports
 import './style.css';
 
-// Classes
+// Class Imports
 import PetAPI from './utils/PetAPI';
 import DropdownFilter from './components/DropdownFilter';
 import Pet from './components/Pet';
 
-import axios from 'axios';
-import { ALL_PETS } from './utils/setup';
-
 // DOM Elements
 const main = document.querySelector('#main');
-const dropdownFilter = new DropdownFilter(
-  ['Act quickly', 'Adopted', 'Special needs'],
-  ''
-);
 
 // DOM Fragment - Add all elements to this then append to main
 // to prevent Document reflow everytime we add a child to main
 const docFrag = document.createDocumentFragment();
 
+// Initial Global Variables
 let cardList;
+const petApi = new PetAPI();
+const dropdownFilter = new DropdownFilter(
+  ['Act quickly', 'Adopted', 'Special needs'],
+  ''
+);
 
 /*
  * TO DO:
  * Get user's location and then make the API call
- * Make a second call for cats and then combine the two into one object/array
  * Make a new API call for the next 50 when pager is clicked/lazy loading?
  */
 
@@ -47,11 +45,6 @@ const params = [
     },
   },
 ];
-const petApi = new PetAPI();
-const getPetData = async () => {
-  console.log('PET DATA IS HERE!');
-  return petData;
-};
 
 const createCardList = (pets) => {
   cardList.classList.add(
