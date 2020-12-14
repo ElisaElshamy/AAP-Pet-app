@@ -19,6 +19,11 @@ class Pet {
     this.act_quickly = null;
     this.adopted = null;
     this.special_needs = null;
+
+    this.color = null;
+    this.size = null;
+    this.details = null;
+    this.story = null;
   }
 
   setPetInfo(petData) {
@@ -47,6 +52,16 @@ class Pet {
     this.act_quickly = petData.act_quickly;
     this.adopted = Math.random() < 0.5; // Generates random Boolean
     this.special_needs = petData.special_needs;
+
+    this.color = petData.color ? petData.color : '';
+    this.size = petData.size ? petData.size : '';
+    this.story = petData.description ? petData.description : '';
+    this.details = {
+      housetrained: petData.housetrained,
+      good_with_kids: petData.good_with_kids,
+      good_with_cats: petData.good_with_cats,
+      good_with_dogs: petData.good_with_dogs,
+    };
   }
 
   createCard() {
@@ -117,6 +132,11 @@ class Pet {
     card.append(petImg, petDetails);
 
     return card;
+  }
+
+  createInfoCard() {
+    const infoCard = document.createElement('div');
+    infoCard.classList.add('info-card', 'bg-turquoise', 'text-white');
   }
 }
 
