@@ -29,81 +29,31 @@ let cardList;
  * Make a new API call for the next 50 when pager is clicked/lazy loading?
  */
 
-/*
+const params = [
+  {
+    params: {
+      geo_range: 50,
+      city_or_zip: 47374,
+      species: 'dog',
+      output: 'json',
+    },
+  },
+  {
+    params: {
+      geo_range: 50,
+      city_or_zip: 47374,
+      species: 'cat',
+      output: 'json',
+    },
+  },
+];
 const petApi = new PetAPI();
-const params = [
-  {
-    params: {
-      geo_range: 50,
-      city_or_zip: 47374,
-      species: 'dog',
-      output: 'json',
-    },
-  },
-  {
-    params: {
-      geo_range: 50,
-      city_or_zip: 47374,
-      species: 'cat',
-      output: 'json',
-    },
-  },
-];
-
-const dogs = petApi.getPets(params);
-console.log(dogs);
-params.params.species = 'cat';
-const cats = petApi.getPets(params);
-
-const pets = dogs.concat(cats);
-
-console.log(pets);
-
-
-const pets = petApi.getAllPets(params);
-
-console.log(pets);
-console.log('Do I wait?');
-*/
-
-const params = [
-  {
-    params: {
-      geo_range: 50,
-      city_or_zip: 47374,
-      species: 'dog',
-      output: 'json',
-    },
-  },
-  {
-    params: {
-      geo_range: 50,
-      city_or_zip: 47374,
-      species: 'cat',
-      output: 'json',
-    },
-  },
-];
-
-/*
-const getAllPets = (query) => {
-  const url = `${BASE_API_URL}pet_search?key=${API_KEY}`;
-  Promise.all([axios.get(url, query[0]), axios.get(url, query[1])])
-    .then((res) => {
-      const dogs = res[0].data.pets;
-      const cats = res[1].data.pets;
-      const allPets = dogs.concat(cats);
-      return allPets;
-    })
-    .catch((err) => console.log(err));
+const getPetData = async () => {
+  console.log('PET DATA IS HERE!');
+  return petData;
 };
 
-const pets = (params) => getAllPets(params);
-console.log(pets(params));
-*/
-
 const createCardList = (pets) => {
-  //const cardList = document.createElement('div');
   cardList.classList.add(
     'card-list',
     'grid',
@@ -135,9 +85,10 @@ const calcCardHeight = () => {
 };
 
 window.addEventListener('resize', calcCardHeight);
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const petData = await petApi.getAllPets(params);
   cardList = document.createElement('div');
   cardList.appendChild(dropdownFilter.createDropdownFilter());
-  createCardList(ALL_PETS);
+  createCardList(petData);
   calcCardHeight();
 });

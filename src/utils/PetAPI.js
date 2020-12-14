@@ -22,7 +22,7 @@ class PetAPI {
 
   getAllPets(query) {
     const url = `${this._baseUrl}pet_search?key=${this._apiKey}`;
-    Promise.all([axios.get(url, query[0]), axios.get(url, query[1])])
+    return Promise.all([axios.get(url, query[0]), axios.get(url, query[1])])
       .then((res) => {
         const dogs = res[0].data.pets;
         const cats = res[1].data.pets;
