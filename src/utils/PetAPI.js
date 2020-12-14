@@ -12,14 +12,6 @@ class PetAPI {
     this._baseUrl = BASE_API_URL;
   }
 
-  getPets(query) {
-    const url = `pet_search?key=${this._apiKey}`;
-    axios
-      .get(url, query)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
-
   getAllPets(query) {
     const url = `${this._baseUrl}pet_search?key=${this._apiKey}`;
     return Promise.all([axios.get(url, query[0]), axios.get(url, query[1])])
@@ -32,9 +24,17 @@ class PetAPI {
       .catch((err) => console.log(err));
   }
 
+  getPets(query) {
+    const url = `pet_search?key=${this._apiKey}`;
+    return axios
+      .get(url, query)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   getPet(query) {
     const url = `pet_details?key=${this._apiKey}`;
-    axios
+    return axios
       .get(url, query)
       .then((res) => res)
       .catch((err) => err);
